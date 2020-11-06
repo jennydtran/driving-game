@@ -11,7 +11,6 @@ car.style.left = '0';
 car.style.top = '0';
 
 var timerID = null;
-var isMoving = false;
 
 function handleKeyDown(event) {
   if (event.code !== 'ArrowDown' && event.code !== 'ArrowUp' && event.code !== 'ArrowLeft' && event.code !== 'ArrowRight' && event.code !== 'Space') {
@@ -36,14 +35,13 @@ function handleKeyDown(event) {
   }
 
   if (event.code === 'Space') {
-    if (!isMoving) {
-      isMoving = true;
+    if (!carData.moving) {
+      carData.moving = true;
       timerID = setInterval(moveCar, 160);
     } else {
-      isMoving = false;
+      carData.moving = false;
       clearInterval(timerID);
     }
-    carData.moving = isMoving;
   }
 
 }
