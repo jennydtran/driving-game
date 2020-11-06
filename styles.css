@@ -7,8 +7,14 @@ body {
 
 img {
   position: absolute;
-  width: 13%;
+  top: 0;
+  left: 0;
   transform-origin: center;
+  width: 120px;
+}
+
+.transition {
+  transition: transform 150ms;
 }
 
 .right {
@@ -27,6 +33,7 @@ img {
   transform: rotate(-90deg);
 }
 
-.transition {
-  transition: transform 150ms;
+.move {
+  offset-path: path('M60,60');
+  offset-position: left top;
 }
