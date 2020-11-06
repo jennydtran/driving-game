@@ -39,12 +39,11 @@ function handleKeyDown(event) {
     if (!isMoving) {
       isMoving = true;
       timerID = setInterval(moveCar, 160);
-      carData.moving = isMoving;
     } else {
       isMoving = false;
       clearInterval(timerID);
-      carData.moving = isMoving;
     }
+    carData.moving = isMoving;
   }
 
 }
