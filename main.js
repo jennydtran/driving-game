@@ -1,37 +1,28 @@
 var car = document.querySelector('img');
 
-// Rotate Down
-function rotateDown(event) {
-  if (event.code !== 'ArrowDown') {
-    return;
-  }
-  car.className = 'car transition down';
-}
-window.addEventListener('keydown', rotateDown);
+var carDirection = {};
 
-// Rotate Up
-function rotateUp(event) {
-  if (event.code !== 'ArrowUp') {
+function handleKeyDown(event) {
+  if (event.code !== 'ArrowDown' && event.code !== 'ArrowUp' && event.code !== 'ArrowLeft' && event.code !== 'ArrowRight') {
     return;
   }
-  car.className = 'car transition up';
-}
-window.addEventListener('keydown', rotateUp);
 
-// Rotate Left
-function rotateLeft(event) {
-  if (event.code !== 'ArrowLeft') {
-    return;
-  }
-  car.className = 'car transition left';
-}
-window.addEventListener('keydown', rotateLeft);
+  if (event.code === 'ArrowDown') {
+    car.className = 'car transition down';
+    carDirection.keyDown = 'south';
 
-// Rotate Right
-function rotateRight(event) {
-  if (event.code !== 'ArrowRight') {
-    return;
+  } else if (event.code === 'ArrowUp') {
+    car.className = 'car transition up';
+    carDirection.keyUp = 'north';
+
+  } else if (event.code === 'ArrowLeft') {
+    car.className = 'car transition left';
+    carDirection.keyLeft = 'west';
+
+  } else if (event.code === 'car transition right') {
+    car.className = 'car transition right';
+    carDirection.keyRight = 'east';
   }
-  car.className = 'car transition right';
+
 }
-window.addEventListener('keydown', rotateRight);
+window.addEventListener('keydown', handleKeyDown);
