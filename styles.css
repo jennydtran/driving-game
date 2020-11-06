@@ -7,5 +7,26 @@ body {
 
 img {
   position: absolute;
-  width: 10%;
+  width: 13%;
+  transform-origin: center;
+}
+
+.right {
+  transform: rotate(0deg);
+}
+
+.down {
+  transform: rotate(90deg);
+}
+
+.left {
+  transform: rotate(180deg);
+}
+
+.up {
+  transform: rotate(-90deg);
+}
+
+.transition {
+  transition: transform 150ms;
 }
