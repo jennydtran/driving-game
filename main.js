@@ -2,14 +2,16 @@ var car = document.querySelector('img');
 
 var carData = {
   direction: {},
-  position: {}
-}
+  position: {},
+  moving: false
+};
 
 var carSpeed = 15;
 car.style.left = '0';
 car.style.top = '0';
 
 var timerID = null;
+var isMoving = false;
 
 function handleKeyDown(event) {
   if (event.code !== 'ArrowDown' && event.code !== 'ArrowUp' && event.code !== 'ArrowLeft' && event.code !== 'ArrowRight' && event.code !== 'Space') {
@@ -34,13 +36,21 @@ function handleKeyDown(event) {
   }
 
   if (event.code === 'Space') {
-    timerID = setInterval(moveCar, 160);
+    if (!isMoving) {
+      isMoving = true;
+      timerID = setInterval(moveCar, 160);
+      carData.moving = isMoving;
+    } else {
+      isMoving = false;
+      clearInterval(timerID);
+      carData.moving = isMoving;
+    }
   }
 
 }
 window.addEventListener('keydown', handleKeyDown);
 
-function moveCar( ) {
+function moveCar() {
   car.style.left = parseInt(car.style.left) + carSpeed + 'px';
 
   carData.position.locationX = car.style.left;
