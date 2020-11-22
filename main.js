@@ -1,12 +1,16 @@
 var car = document.querySelector('img');
 
 var carData = {
-  direction: {},
-  position: {},
+  direction: 'east',
+  position: {
+    locationX: 0,
+    locationY: 0
+  },
   moving: false
 };
 
-var carSpeed = 15;
+var carSpeedEastSouth = 25;
+var carSpeedWestNorth = -25;
 car.style.left = '0';
 car.style.top = '0';
 
@@ -48,7 +52,16 @@ function handleKeyDown(event) {
 window.addEventListener('keydown', handleKeyDown);
 
 function moveCar() {
-  car.style.left = parseInt(car.style.left) + carSpeed + 'px';
+
+  if (carData.direction === 'east') {
+    car.style.left = parseInt(car.style.left) + carSpeedEastSouth + 'px';
+  } else if (carData.direction === 'south') {
+    car.style.top = parseInt(car.style.top) + carSpeedEastSouth + 'px';
+  } else if (carData.direction === 'west') {
+    car.style.left = parseInt(car.style.left) + carSpeedWestNorth + 'px';
+  } else if (carData.direction === 'north') {
+    car.style.top = parseInt(car.style.top) + carSpeedWestNorth + 'px';
+  }
 
   carData.position.locationX = car.style.left;
   carData.position.locationY = car.style.top;
